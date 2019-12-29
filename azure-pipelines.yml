@@ -44,3 +44,12 @@ steps:
   inputs:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(35ca71a0-a1fa-43cd-96cb-5976b7a9f5ce)'
+    appType: 'webApp'
+    WebAppName: 'test-app'
+    deployToSlotOrASE: true
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
